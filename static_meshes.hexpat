@@ -46,11 +46,11 @@ struct BoundingSphere {
 
 struct ColorBGRA {
 	// Not sure in which range the colors are
-	u8 b [[color("0000FF")]];
-	u8 g [[color("00FF00")]];;
-	u8 r [[color("FF0000")]];;
-	u8 a [[color("AAAAAA")]];;
-};
+	u8 b;
+	u8 g;
+	u8 r;
+	u8 a [[color("07687A")]];
+} [[color(std::format("{:02X}{:02X}{:02X}", r, g, b))]];
 
 // https://github.com/Hrnchamd/MGE-XE/blob/345ed72c115bc2a1984c649ebe615df81ae04f10/MGEfuncs/DXVertex.h#L13
 struct CompressedVertex {
@@ -99,7 +99,7 @@ struct DistantStatic {
 	BoundingSphere boundingSphere;
 	StaticType staticType;
 	Subset subsets[numSubsets];
-};
+} [[name(std::format("{}", staticType))]];
 
 // https://github.com/Hrnchamd/MGE-XE/blob/master/MGEgui/DistantLand/DistantLandForm.cs#L1370
 fn getStaticCount() {
