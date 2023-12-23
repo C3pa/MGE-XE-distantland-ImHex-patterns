@@ -1,0 +1,8 @@
+{
+	"files.associations": {
+		"*.hexpat": "objective-c",
+		"*.pat": "objective-c",
+		"memory": "cpp",
+		"functional": "cpp"
+	}
+}

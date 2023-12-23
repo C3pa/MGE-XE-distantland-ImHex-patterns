@@ -7,22 +7,10 @@
 #include <std/sys.pat>
 #include <type/float16.pat>
 
+#include <math.hexpat>
+
 #pragma array_limit 0xFFFFFFFF
 #pragma pattern_limit 0xFFFFFF
-
-struct Vector3 {
-	float x, y, z;
-};
-
-struct BoundingSphere {
-	float radius;
-	Vector3 center;
-};
-
-struct BoundingBox {
-	Vector3 min;
-	Vector3 max;
-};
 
 struct CompressedVertex {
 	Vector3 location;
@@ -31,10 +19,6 @@ struct CompressedVertex {
 
 struct TriangleLarge {
 	u32 indices[3];
-} [[static]];
-
-struct Triangle {
-	u16 indices[3];
 } [[static]];
 
 struct Mesh {
