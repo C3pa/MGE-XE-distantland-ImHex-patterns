@@ -1,4 +1,4 @@
-// ImHex 1.31.0 Pattern File
+// ImHex 1.34.0 Pattern File
 // Author: C3pa
 // Description: MGE XE distantland/statics/usage.data
 
@@ -6,55 +6,13 @@
 #include <std/sys.pat>
 #include <std/io.pat>
 
+#include <math.hexpat>
+#include <distantland.hexpat>
 
 #pragma endian little
-//#pragma debug
+// #pragma debug
 
 #pragma once
-
-
-///////////////////////
-// Begin: math.hexpat
-///////////////////////
-
-struct Vector3 {
-	float x, y, z;
-} [[static, format("format_Vector3")]];
-
-fn format_Vector3(Vector3 v) {
-	return std::format("({:.3f}, {:.3f}, {:.3f})", v.x, v.y, v.z);
-};
-
-///////////////////////
-// Begin: distantland.hexpat
-///////////////////////
-
-namespace DynamicVisGroup {
-	enum DataSource : u8 {
-		Journal = 1,
-		Global = 2,
-		UniqueObject = 3,
-	};
-
-	struct Range {
-		s32 begin, end;
-	} [[static]];
-
-	// https://github.com/Hrnchamd/MGE-XE/blob/345ed72c115bc2a1984c649ebe615df81ae04f10/src/mge/distantland.h#L26
-	struct DynamicVisGroup {
-		DataSource source;
-		// bool enabled = true;
-		// const void *gameObject;
-		char id[64];
-		u8 rangeCount;
-		Range ranges[8]; // std::vector<Range> ranges;
-		//QuadTreeMesh references[]; // std::vector<QuadTreeMesh*> references;
-	};// [[static]];
-}
-
-///////////////////////
-// End: distantland.hexpat
-///////////////////////
 
 struct Reference {
 	u32 id;

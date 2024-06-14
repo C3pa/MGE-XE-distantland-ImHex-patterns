@@ -1,7 +1,6 @@
 #pragma once
 
 #include <std/math.pat>
-#include <std/mem.pat>
 #include <std/sys.pat>
 #include <type/float16.pat>
 
@@ -24,7 +23,7 @@ struct ColorBGRA {
 	u8 r;
 	// 255 for fully opaque
 	u8 a [[color("07687A")]];
-} [[color(std::format("{:02X}{:02X}{:02X}", r, g, b))]];
+} [[static, color(std::format("{:02X}{:02X}{:02X}", r, g, b))]];
 
 // https://github.com/Hrnchamd/MGE-XE/blob/345ed72c115bc2a1984c649ebe615df81ae04f10/MGEfuncs/DXVertex.h#L13
 struct CompressedVertex {
@@ -40,7 +39,7 @@ struct CompressedVertex {
 
 	// https://github.com/Hrnchamd/MGE-XE/blob/master/MGEfuncs/NifConverter.cpp#L284
 	u8 normal[3];
-	// Average emissive color is the fourth in normal array:
+	// Average emissive color is the fourth value in normal array:
 	// https://github.com/Hrnchamd/MGE-XE/blob/master/MGEfuncs/NifConverter.cpp#L288
 	// https://github.com/Hrnchamd/MGE-XE/blob/master/MGEfuncs/NifConverter.cpp#L529
 	u8 emissiveAverage;

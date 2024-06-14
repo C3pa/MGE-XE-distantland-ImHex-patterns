@@ -1,4 +1,4 @@
-// ImHex 1.31.0 Pattern File
+// ImHex 1.34.0 Pattern File
 // Author: C3pa
 // Description: MGE XE distantland/version
 
