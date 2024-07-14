@@ -1,18 +1,18 @@
-// ImHex 1.34.0 Pattern File
-// Author: C3pa
-// Description: MGE XE distantland/statics/usage.data
-
-#include <std/mem.pat>
-#include <std/sys.pat>
-#include <std/io.pat>
-
-#include <math.hexpat>
-#include <distantland.hexpat>
-
-#pragma endian little
-// #pragma debug
-
+// ImHex 1.35.4 Pattern File
+#pragma author C3pa
+#pragma description Pattern for MGE XE MGE XE distantland/statics/usage.data file.
+#pragma version 1.0.0
 #pragma once
+#pragma endian little
+
+
+import std.io;
+import std.mem;
+import std.sys;
+
+import math;
+import distantland;
+
 
 struct Reference {
 	u32 id;
@@ -30,32 +30,9 @@ struct Exterior {
 
 struct Interior {
 	u32 numReferences;
-	if (numReferences) {
-		char cellName[64];
-		Reference references[numReferences];
-	}
+	char cellName[64];
+	Reference references[numReferences];
 };
-
-
-fn getNumInts(u128 offset) {
-	u32 numInts = 0;
-
-	while (true) {
-		u32 numReferences = std::mem::read_unsigned(offset, 4);
-		offset += 4;
-		if (numReferences > 0) {
-			// char cellName[64];
-			offset += 64;
-			offset += numReferences * 34;
-			numInts += 1;
-			continue;
-		}
-		break;
-	}
-
-	return numInts;
-};
-
 
 // https://github.com/Hrnchamd/MGE-XE/blob/345ed72c115bc2a1984c649ebe615df81ae04f10/src/mge/distantinit.cpp#L836
 u32 DistantStaticCount @ $;
@@ -66,8 +43,8 @@ DynamicVisGroup::DynamicVisGroup visGroups[dynamicVisGroupCount] @ $;
 
 Exterior exterior @ $;
 
-u32 numInteriors = getNumInts($);
-Interior interiors[numInteriors] @ $;
+u64 interiorEndAdress = std::mem::base_address() + std::mem::size() - 8;
+Interior interiors[while($ < interiorEndAdress)] @ $;
 
 // MGEgui//DistantLand//DistantLandForm.csL1356
 s32 terminator @ $ [[comment("Unused")]];

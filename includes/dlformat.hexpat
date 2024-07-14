@@ -1,10 +1,14 @@
 #pragma once
 
-#include <std/math.pat>
-#include <std/sys.pat>
-#include <type/float16.pat>
+import std.math;
+import std.sys;
+import type.float16;
 
-#include <math.hexpat>
+import math;
+
+
+// https://github.com/Hrnchamd/MGE-XE/blob/master/MGEgui/DistantLand/DistantLandForm.cs#L1370
+
 
 enum StaticType : u8 {
 	STATIC_AUTO = 0,

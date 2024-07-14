@@ -1,9 +1,12 @@
-// ImHex 1.34.0 Pattern File
-// Author: C3pa
-// Description: MGE XE distantland/version
+// ImHex 1.35.4 Pattern File
+#pragma author C3pa
+#pragma description Pattern for MGE XE distantland/version file.
+#pragma version 1.0.0
+#pragma once
+#pragma endian little
 
-#include <std/mem.pat>
-#include <std/sys.pat>
+import std.mem;
+import std.sys;
 
 
 u8 version @ 0x00;
